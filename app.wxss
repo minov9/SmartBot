@@ -1,0 +1,153 @@
+/**
+ * SmartBot Design System
+ * Apple iOS Native Style
+ */
+
+/* ========== Color Variables ========== */
+page {
+  /* Apple Colors */
+  --color-primary: #007AFF;
+  --color-primary-dark: #0066D6;
+  --color-bg: #FFFFFF;
+  --color-bg-secondary: #F5F5F7;
+  --color-bg-tertiary: #F2F2F7;
+  --color-text: #1D1D1F;
+  --color-text-secondary: #86868B;
+  --color-text-tertiary: #C7C7CC;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-success: #34C759;
+  --color-error: #FF3B30;
+
+  /* Shadows */
+  --shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16rpx 48rpx rgba(0, 0, 0, 0.12);
+
+  /* Spacing */
+  --spacing-xs: 8rpx;
+  --spacing-sm: 16rpx;
+  --spacing-md: 24rpx;
+  --spacing-lg: 32rpx;
+  --spacing-xl: 48rpx;
+
+  /* Border Radius */
+  --radius-sm: 8rpx;
+  --radius-md: 16rpx;
+  --radius-lg: 24rpx;
+  --radius-xl: 32rpx;
+  --radius-full: 9999rpx;
+
+  /* Base Styles */
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  font-size: 28rpx;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.5;
+  letter-spacing: -0.5rpx;
+}
+
+/* ========== Utility Classes ========== */
+.container {
+  padding: var(--spacing-lg);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-white {
+  color: var(--color-white);
+}
+
+/* ========== Buttons ========== */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-size: 30rpx;
+  font-weight: 500;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--color-cta);
+  color: var(--color-white);
+}
+
+.btn-primary:active {
+  background: #0284C7;
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background: var(--color-white);
+  color: var(--color-primary);
+  border: 2rpx solid var(--color-border);
+}
+
+.btn-secondary:active {
+  background: var(--color-bg);
+}
+
+/* ========== Form Elements ========== */
+.input {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--color-white);
+  border: 2rpx solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 28rpx;
+  color: var(--color-text);
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: var(--color-cta);
+  outline: none;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-size: 26rpx;
+  font-weight: 500;
+  color: var(--color-secondary);
+}
+
+/* ========== Cards ========== */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* ========== Safe Area ========== */
+.safe-area-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}

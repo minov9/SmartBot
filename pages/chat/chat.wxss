@@ -1,0 +1,211 @@
+/* pages/chat/chat.wxss */
+/* Apple iMessage 风格 - 优化版 */
+
+.chat-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #FFFFFF;
+}
+
+/* ==================== 消息列表 ==================== */
+.message-list {
+  flex: 1;
+  padding: 16rpx 24rpx;
+}
+
+/* ==================== 欢迎区域 ==================== */
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 40rpx 80rpx;
+}
+
+.bot-avatar-large {
+  width: 120rpx;
+  height: 120rpx;
+  background: #007AFF;
+  border-radius: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 122, 255, 0.20);
+}
+
+.bot-emoji {
+  font-size: 56rpx;
+}
+
+.welcome-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 8rpx;
+  letter-spacing: -0.5rpx;
+}
+
+.welcome-desc {
+  font-size: 28rpx;
+  color: #86868B;
+  margin-bottom: 48rpx;
+}
+
+.quick-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  width: 100%;
+  max-width: 560rpx;
+}
+
+.quick-btn {
+  padding: 24rpx 28rpx;
+  background: #F5F5F7;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  color: #007AFF;
+  text-align: center;
+  font-weight: 500;
+}
+
+.quick-btn:active {
+  background: #E8E8ED;
+  transform: scale(0.98);
+}
+
+/* ==================== 消息气泡 ==================== */
+.message-row {
+  display: flex;
+  margin-bottom: 4rpx;
+  padding: 0 8rpx;
+}
+
+.message-row.user {
+  justify-content: flex-end;
+}
+
+.message-row.assistant {
+  justify-content: flex-start;
+}
+
+.bubble {
+  max-width: 70%;
+  padding: 18rpx 24rpx;
+  border-radius: 36rpx;
+  word-break: break-word;
+}
+
+/* 用户消息 - iMessage 蓝 */
+.bubble.user {
+  background: #007AFF;
+  color: #FFFFFF;
+  border-bottom-right-radius: 6rpx;
+}
+
+/* AI 消息 - iOS 灰 */
+.bubble.assistant {
+  background: #E9E9EB;
+  color: #000000;
+  border-bottom-left-radius: 6rpx;
+}
+
+.bubble-text {
+  font-size: 32rpx;
+  line-height: 1.45;
+  letter-spacing: -0.5rpx;
+}
+
+/* ==================== 打字动画 ==================== */
+.bubble.typing {
+  padding: 22rpx 28rpx;
+}
+
+.typing-dots {
+  display: flex;
+  gap: 8rpx;
+  align-items: center;
+}
+
+.typing-dots .dot {
+  width: 12rpx;
+  height: 12rpx;
+  background: #8E8E93;
+  border-radius: 50%;
+  animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+.typing-dots .dot:nth-child(1) { animation-delay: 0s; }
+.typing-dots .dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots .dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingBounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-6rpx);
+    opacity: 1;
+  }
+}
+
+/* ==================== 输入区域 ==================== */
+.input-bar {
+  padding: 12rpx 20rpx;
+  padding-bottom: calc(12rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(12rpx + env(safe-area-inset-bottom));
+  background: #F6F6F6;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.08);
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  background: #FFFFFF;
+  border-radius: 40rpx;
+  padding: 8rpx 8rpx 8rpx 24rpx;
+  border: 1rpx solid rgba(0, 0, 0, 0.08);
+}
+
+.text-input {
+  flex: 1;
+  height: 68rpx;
+  font-size: 32rpx;
+  color: #000000;
+  letter-spacing: -0.5rpx;
+}
+
+.placeholder {
+  color: #C7C7CC;
+}
+
+.send-icon {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #E5E5EA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.send-icon.active {
+  background: #007AFF;
+  box-shadow: 0 4rpx 12rpx rgba(0, 122, 255, 0.25);
+}
+
+.send-icon .arrow {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+/* ==================== 底部占位 ==================== */
+.list-bottom {
+  height: 16rpx;
+}

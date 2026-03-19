@@ -1,0 +1,100 @@
+<!--pages/settings/settings.wxml-->
+<view class="settings-page">
+  <view class="section">
+    <view class="section-title">API 配置</view>
+
+    <!-- Provider 选择 -->
+    <view class="form-item">
+      <text class="input-label">服务商</text>
+      <picker
+        mode="selector"
+        range="{{providers}}"
+        range-key="name"
+        value="{{providerIndex}}"
+        bindchange="onProviderChange"
+      >
+        <view class="picker-value">
+          {{providers[providerIndex].name}}
+          <text class="picker-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+
+    <!-- Base URL -->
+    <view class="form-item">
+      <text class="input-label">Base URL</text>
+      <input
+        class="input"
+        placeholder="https://api.example.com/v1"
+        value="{{settings.baseUrl}}"
+        bindinput="onBaseUrlInput"
+      />
+    </view>
+
+    <!-- API Key -->
+    <view class="form-item">
+      <text class="input-label">API Key</text>
+      <view class="input-with-action">
+        <input
+          class="input flex-1"
+          placeholder="请输入 API Key"
+          password="{{!showApiKey}}"
+          value="{{settings.apiKey}}"
+          bindinput="onApiKeyInput"
+        />
+        <view class="input-action" bindtap="toggleShowApiKey">
+          {{showApiKey ? '🙈' : '👁️'}}
+        </view>
+      </view>
+    </view>
+
+    <!-- Model -->
+    <view class="form-item">
+      <text class="input-label">模型</text>
+      <view class="input-with-action">
+        <input
+          class="input flex-1"
+          placeholder="{{settings.apiKey ? '输入或点击刷新获取' : '请先填写 API Key'}}"
+          value="{{settings.model}}"
+          bindinput="onModelInput"
+          disabled="{{!settings.apiKey}}"
+        />
+        <view
+          class="input-action {{isLoadingModels ? 'loading' : ''}}"
+          bindtap="fetchModels"
+        >
+          🔄
+        </view>
+      </view>
+      <!-- 模型列表 -->
+      <view class="model-list" wx:if="{{models.length > 0}}">
+        <view
+          class="model-item {{settings.model === item ? 'active' : ''}}"
+          wx:for="{{models}}"
+          wx:key="*this"
+          bindtap="selectModel"
+          data-model="{{item}}"
+        >{{item}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="actions">
+    <button class="btn btn-secondary" bindtap="testConnection">
+      测试连接
+    </button>
+    <button class="btn btn-primary" bindtap="saveSettings">
+      保存配置
+    </button>
+  </view>
+
+  <!-- 提示信息 -->
+  <view class="tips">
+    <view class="tip-title">💡 使用说明</view>
+    <view class="tip-item">1. 选择服务商或填写自定义 Base URL</view>
+    <view class="tip-item">2. 填写您的 API Key</view>
+    <view class="tip-item">3. 点击刷新获取可用模型，或手动输入</view>
+    <view class="tip-item">4. 测试连接后保存配置</view>
+  </view>
+</view>

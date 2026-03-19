@@ -1,0 +1,78 @@
+<!--pages/chat/chat.wxml-->
+<view class="chat-page">
+  <!-- 消息列表 -->
+  <scroll-view
+    class="message-list"
+    scroll-y
+    scroll-into-view="{{scrollToView}}"
+    enhanced
+    show-scrollbar="{{false}}"
+  >
+    <!-- 欢迎消息 -->
+    <view class="welcome-section" wx:if="{{messages.length === 0}}">
+      <view class="bot-avatar-large">
+        <text class="bot-emoji">🤖</text>
+      </view>
+      <view class="welcome-title">SmartBot</view>
+      <view class="welcome-desc">AI 智能客服，随时为您服务</view>
+
+      <!-- 快捷问题 -->
+      <view class="quick-questions">
+        <view
+          class="quick-btn"
+          wx:for="{{quickReplies}}"
+          wx:key="*this"
+          bindtap="onQuickReply"
+          data-text="{{item}}"
+        >{{item}}</view>
+      </view>
+    </view>
+
+    <!-- 消息气泡 - Apple iMessage 风格 -->
+    <block wx:for="{{messages}}" wx:key="id">
+      <view class="message-row {{item.role}}" id="msg-{{item.id}}">
+        <view class="bubble {{item.role}}">
+          <text class="bubble-text" user-select>{{item.content}}</text>
+        </view>
+      </view>
+    </block>
+
+    <!-- AI 正在输入 -->
+    <view class="message-row assistant" wx:if="{{isTyping}}">
+      <view class="bubble assistant typing">
+        <view class="typing-dots">
+          <view class="dot"></view>
+          <view class="dot"></view>
+          <view class="dot"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部占位 -->
+    <view class="list-bottom" id="bottom"></view>
+  </scroll-view>
+
+  <!-- 输入区域 - Apple 风格 -->
+  <view class="input-bar">
+    <view class="input-container">
+      <input
+        class="text-input"
+        placeholder="信息"
+        placeholder-class="placeholder"
+        value="{{inputValue}}"
+        bindinput="onInput"
+        bindconfirm="sendMessage"
+        confirm-type="send"
+        cursor-spacing="20"
+        adjust-position="{{true}}"
+        disabled="{{isTyping}}"
+      />
+      <view
+        class="send-icon {{inputValue && !isTyping ? 'active' : ''}}"
+        bindtap="sendMessage"
+      >
+        <text class="arrow">↑</text>
+      </view>
+    </view>
+  </view>
+</view>

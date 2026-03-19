@@ -1,0 +1,16 @@
+{
+    "pages": [
+        "pages/welcome/welcome",
+        "pages/chat/chat",
+        "pages/settings/settings"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#0F172A",
+        "navigationBarTitleText": "SmartBot",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#F8FAFC",
+        "backgroundTextStyle": "dark"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

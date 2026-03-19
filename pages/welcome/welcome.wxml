@@ -1,0 +1,48 @@
+<!--pages/welcome/welcome.wxml-->
+<view class="welcome-page">
+  <!-- Logo 区域 -->
+  <view class="hero-section">
+    <view class="app-icon">
+      <text class="icon-emoji">🤖</text>
+    </view>
+    <view class="app-name">SmartBot</view>
+    <view class="app-tagline">AI 智能客服</view>
+  </view>
+
+  <!-- 功能介绍 -->
+  <view class="features-section">
+    <view class="feature-card">
+      <view class="feature-icon">💭</view>
+      <view class="feature-content">
+        <text class="feature-title">智能对话</text>
+        <text class="feature-desc">AI 即时响应，解答疑问</text>
+      </view>
+    </view>
+
+    <view class="feature-card">
+      <view class="feature-icon">⚡️</view>
+      <view class="feature-content">
+        <text class="feature-title">极速回复</text>
+        <text class="feature-desc">毫秒级响应，无需等待</text>
+      </view>
+    </view>
+
+    <view class="feature-card">
+      <view class="feature-icon">🔐</view>
+      <view class="feature-content">
+        <text class="feature-title">安全可靠</text>
+        <text class="feature-desc">数据加密，隐私保护</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作 -->
+  <view class="action-section">
+    <button class="primary-btn" bindtap="startChat">
+      开始对话
+    </button>
+    <view class="secondary-link" bindtap="goSettings">
+      设置 API
+    </view>
+  </view>
+</view>
